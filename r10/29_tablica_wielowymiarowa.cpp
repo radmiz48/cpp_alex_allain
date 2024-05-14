@@ -3,12 +3,12 @@
 using namespace std;
 
 int main()
-{    
-    int tablica[8][8];  // Deklaracja tablicy, ktÃ³ra wyglÄ…da jak szachownica
+{      
+    int tablica[8][8];  // Deklaracja tablicy, kt¢ra wygl¥da jak szachownica
 
     for (int i =0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
-            tablica[i][j] = i * j;      // Nadanie wartoÅ›ci kaÅ¼demu elementowi tablicy
+            tablica[i][j] = i * j;      // Nadanie warto˜ci ka¾demu elementowi tablicy
         }
     }
 
