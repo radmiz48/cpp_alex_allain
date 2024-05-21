@@ -7,6 +7,7 @@ void displayTitle();
 void displayBoard(char game_board[][6], int size);
 bool checkSquaresHorizontally(char board[][6], int size, int squares_to_cross_out, char player);
 bool checkSquaresVertically(char board[][6], int size, int squares_to_cross_out, char player);
+bool checkSquaresDiagonallyLeftRight(char board[][6], int size, int squares_to_cross_out, char player);
 bool checkWinner(char game_board[][6], int size, int squares_to_cross_out, char player);
 
 int main()
@@ -154,8 +155,41 @@ bool checkSquaresVertically(char board[][6], int size, int squares_to_cross_out,
     return false;
 }
 
+bool checkSquaresDiagonallyLeftRight(char board[][6], int size, int squares_to_cross_out, char player) {
+    int squares_crossed_out_in_row = 0;
+
+    // rows
+    for (int i = 0; i < (size - squares_to_cross_out + 1); i++) {
+        // column
+        for (int j = 0; j < (size - squares_to_cross_out + 1); j++) {
+
+            // temporary indexes used for increment (starting indexes)
+            int tmp_i = i;
+            int tmp_j = j;
+            // counter used to check squares diagonally
+            int repeat = 0;
+
+            // adjacent squares diagonally
+            while (repeat++ < squares_to_cross_out) {
+                if (board[tmp_i++][tmp_j++] == player) {
+                    squares_crossed_out_in_row++;
+                } else {
+                    squares_crossed_out_in_row = 0;
+                }
+            }
+            // return true if the active player has crossed off the required number of squares
+            if (squares_crossed_out_in_row == squares_to_cross_out) {
+                return true;
+            }
+        }
+    }
+    // return false if the active player has not crossed the required number of squares
+    return false;
+}
+
 bool checkWinner(char game_board[][6], int size, int squares_to_cross_out, char player) {
     return  
         checkSquaresHorizontally(game_board, size, squares_to_cross_out, player) || 
-        checkSquaresVertically(game_board, size, squares_to_cross_out, player);
+        checkSquaresVertically(game_board, size, squares_to_cross_out, player) ||
+        checkSquaresDiagonallyLeftRight(game_board, size, squares_to_cross_out, player);
 }
