@@ -6,6 +6,7 @@ using namespace std;
 void displayTitle();
 void displayBoard(char game_board[][6], int size);
 bool checkSquaresHorizontally(char board[][6], int size, int squares_to_cross_out, char player);
+bool checkSquaresVertically(char board[][6], int size, int squares_to_cross_out, char player);
 bool checkWinner(char game_board[][6], int size, int squares_to_cross_out, char player);
 
 int main()
@@ -130,6 +131,31 @@ bool checkSquaresHorizontally(char board[][6], int size, int squares_to_cross_ou
     return false;
 }
 
+bool checkSquaresVertically(char board[][6], int size, int squares_to_cross_out, char player) {
+    int squares_crossed_out_in_row = 0;
+
+    // columns
+    for (int i = 0; i < size; i++) {
+        // row in each column
+        for (int j = 0; j < size; j++) {
+            // adjacent squares in a column
+            if (board[j][i] == player) {
+                squares_crossed_out_in_row++;
+            } else {
+                squares_crossed_out_in_row = 0;
+            }
+            // return true if the active player has crossed off the required number of squares
+            if (squares_crossed_out_in_row == squares_to_cross_out) {
+                return true;
+            }
+        }
+    }
+    // return false if the active player has not crossed the required number of squares
+    return false;
+}
+
 bool checkWinner(char game_board[][6], int size, int squares_to_cross_out, char player) {
-    return checkSquaresHorizontally(game_board, size, squares_to_cross_out, player);
+    return  
+        checkSquaresHorizontally(game_board, size, squares_to_cross_out, player) || 
+        checkSquaresVertically(game_board, size, squares_to_cross_out, player);
 }
