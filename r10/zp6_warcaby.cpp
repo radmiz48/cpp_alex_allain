@@ -8,23 +8,24 @@ void displayGameBoard(char game_board[][8], int size);
 int main()
 {
     // Specify markers for each player's pawns
-    char w = 'o';   // white simple pawn
-    char W = 'O';   // white "king" pawn
-    char b = '*';   // black simple pawn
-    char B = '@';   // black "king" pawn
+    char w = 'w';   // white simple pawn
+    char W = 'W';   // white "king" pawn
+    char b = 'b';   // black simple pawn
+    char B = 'B';   // black "king" pawn
+    char e = '*';   // empty square
     
     // Create a checkers board
     int size = 8;
     char game_board[8][8];
 
-    // Fill the checkers board with (w)hite and (b)lack pawns, "dark" squares (" ") and "light" squares ("x")
+    // Fill the checkers board with (w)hite and (b)lack pawns, "dark" squares (" ") and "light" squares ("*")
     for (int i = 0; i < size; i++) {
         char marker = (i == 3 || i == 4) ? ' ': ((i < 3) ? w : b);
         for (int j = 0; j < size; j++) {
             if (i % 2 == 0)
-                game_board[i][j] = (j % 2 != 0) ? marker : 'x';
+                game_board[i][j] = (j % 2 != 0) ? marker : e;
             else 
-                game_board[i][j] = (j % 2 == 0) ? marker : 'x';
+                game_board[i][j] = (j % 2 == 0) ? marker : e;
         }
     }
 
@@ -53,9 +54,9 @@ void displayTitle() {
     cout << "Important rules for moving a pawn:\n";
     cout << "1) Pawns can only move diagonally and forwards (towards the opponent only on \"dark\" squares).\n";
     cout << "2) Pawns can move up and down once they become \"kings\", reaching the last row on the opposite side.\n";
-    cout << "3) The game starts with the player with the \"white\" pawns (\"o\" and \"O\").\n";
-    cout << "4) The player with the \"black\" pawns (\"*\" and \"@\") starts the game second.\n";
-    cout << "5) \"Dark\" squares are marked with empty space, and \"light\" squares are marked with an \"x\" (no movement).\n\n";
+    cout << "3) The game starts with the player with the \"white\" pawns (\"w\" and \"W\").\n";
+    cout << "4) The player with the \"black\" pawns (\"b\" and \"B\") starts the game second.\n";
+    cout << "5) \"Dark\" squares are marked with empty space, and \"light\" squares are marked with an \"*\" (no movement).\n\n";
     cout << "Good luck!\n\n";
     cout << string(100, '-');
     cout << "\n\n";
