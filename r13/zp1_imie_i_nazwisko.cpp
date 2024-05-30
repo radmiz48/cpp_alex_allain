@@ -36,17 +36,17 @@ int main()
     // 1) Update the user information using the return function (no pointers or references)
     UserData user1;
     user1 = updateUserData1();
-    cout << user1.name << " " << user1.surname << '\n' << '\n';
+    cout << "Hello, " << user1.name << " " << user1.surname << "! How are you today?\n\n";
 
     // 2) Update user information using the reference
     UserData user2;
     updateUserData2(user2);
-    cout << user2.name << " " << user2.surname << '\n' << '\n';
+    cout << "Hello, " << user2.name << " " << user2.surname << "! How are you today?\n\n";
 
     // 3) Update user information using the pointers
     UserData user3 {"n/a", "n/a"};
     updateUserData3(&user3.name, &user3.surname);
-    cout << user3.name << " " << user3.surname << '\n' << '\n';
+    cout << "Hello, " << user3.name << " " << user3.surname << "! How are you today?\n\n";
 
     return 0;
 }
