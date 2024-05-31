@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -24,11 +25,17 @@ int main()
     cout << "&c - 1 = " << ptr_a - 1 << '\n' << '\n';
 
     long double d;
+    long double e;
     long double *ptr_d = &d;
+    long double *ptr_e = &e;
 
     cout << "&d = " << ptr_d << '\n';
     cout << "sizeof(d) = " << sizeof(d) << '\n';
     cout << "&d - 1 = " << ptr_d - 1 << '\n' << '\n';
+
+    cout << "&e = " << ptr_e << '\n';
+    cout << "sizeof(e) = " << sizeof(e) << '\n';
+    cout << "&e - 1 = " << ptr_e - 1 << '\n' << '\n';
 
     return 0;
 }
