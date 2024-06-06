@@ -6,7 +6,10 @@ void createMulTab( int **pp_mul_tab, int& r, int& c)
     {
         for( size_t j = 0; j < c; j++ )
         {
-            *(*(pp_mul_tab + i) + j) = (i + 1) * (j + 1);
+            // #1
+            // *(*(pp_mul_tab + i) + j) = (i + 1) * (j + 1);
+            // #2
+            pp_mul_tab[ i ][ j ] = (i + 1) * (j + 1);
         }
     }
 }
@@ -25,8 +28,10 @@ void displayMulTab( int **pp_mul_tab, int& r, int& c)
         std::cout << (i + 1) << '\t';
         for( size_t j = 0; j < c; j++ )
         {
-            *(*(pp_mul_tab + i) + j) = (i + 1) * (j + 1);
-            std::cout << *(*(pp_mul_tab + i) + j) << '\t';
+            // #1
+            // std::cout << *(*(pp_mul_tab + i) + j) << '\t';
+            // #2
+            std::cout << pp_mul_tab[ i ][ j ] << '\t';
         }
         std::cout << '\n' << '\n';
     }
